@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+}
+
+/* Subtle minimalist Ankara geometric textile motif for Light & True-Black Dark modes */
+.ankara-canvas {
+  background-color: #fafafa;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke-width='1'%3E%3Cpath d='M48 4L92 48L48 92L4 48Z' stroke='%23059669' stroke-opacity='0.06'/%3E%3Cpath d='M48 18L78 48L48 78L18 48Z' stroke='%23d97706' stroke-opacity='0.07'/%3E%3Cpath d='M48 34L62 48L48 62L34 48Z' stroke='%23059669' stroke-opacity='0.06'/%3E%3Ccircle cx='48' cy='48' r='4' stroke='%23ea580c' stroke-opacity='0.08'/%3E%3Cpath d='M0 0L16 16M96 0L80 16M0 96L16 80M96 96L80 80' stroke='%23d97706' stroke-opacity='0.06'/%3E%3Ccircle cx='0' cy='48' r='12' stroke='%23059669' stroke-opacity='0.045'/%3E%3Ccircle cx='96' cy='48' r='12' stroke='%23059669' stroke-opacity='0.045'/%3E%3Ccircle cx='48' cy='0' r='12' stroke='%23059669' stroke-opacity='0.045'/%3E%3Ccircle cx='48' cy='96' r='12' stroke='%23059669' stroke-opacity='0.045'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 96px 96px;
+}
+
+.dark .ankara-canvas {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke-width='1'%3E%3Cpath d='M48 4L92 48L48 92L4 48Z' stroke='%2310b981' stroke-opacity='0.09'/%3E%3Cpath d='M48 18L78 48L48 78L18 48Z' stroke='%23f59e0b' stroke-opacity='0.09'/%3E%3Cpath d='M48 34L62 48L48 62L34 48Z' stroke='%2310b981' stroke-opacity='0.08'/%3E%3Ccircle cx='48' cy='48' r='4' stroke='%23f97316' stroke-opacity='0.12'/%3E%3Cpath d='M0 0L16 16M96 0L80 16M0 96L16 80M96 96L80 80' stroke='%23f59e0b' stroke-opacity='0.08'/%3E%3Ccircle cx='0' cy='48' r='12' stroke='%2310b981' stroke-opacity='0.06'/%3E%3Ccircle cx='96' cy='48' r='12' stroke='%2310b981' stroke-opacity='0.06'/%3E%3Ccircle cx='48' cy='0' r='12' stroke='%2310b981' stroke-opacity='0.06'/%3E%3Ccircle cx='48' cy='96' r='12' stroke='%2310b981' stroke-opacity='0.06'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 96px 96px;
+}
+
+/* Subtle 4px Ankara textile trim strip */
+.ankara-trim {
+  height: 4px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #059669 0px,
+    #059669 16px,
+    #f97316 16px,
+    #f97316 24px,
+    #eab308 24px,
+    #eab308 32px,
+    #0a0a0a 32px,
+    #0a0a0a 36px
+  );
+}
+
+@keyframes slideInLog {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-log-entry {
+  animation: slideInLog 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-log-entry {
+    animation: none;
+  }
+  .animate-pulse {
+    animation: none;
+  }
+}
+
+.inspector-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.inspector-scroll::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.inspector-scroll::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+
+.inspector-scroll::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
